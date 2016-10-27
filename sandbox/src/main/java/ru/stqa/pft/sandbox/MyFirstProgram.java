@@ -19,8 +19,12 @@ public class MyFirstProgram {
 
     System.out.println("Расстояние между двумя точками:" + "(" + p1.x + "," + p1.y + ")" + " и " + "(" + p2.x + "," + p2.y + ")" + " = " + p2.distance(p1));
 
-       }
+    double len = 5;
+    System.out.println("Площадь квадрата со стороной " + len + " = " + area(len));
+    Square s = new Square(5);
+    System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 
+  }
 
   public static void hello(String somebody) {
     System.out.println("Hello, " + somebody + "!");
