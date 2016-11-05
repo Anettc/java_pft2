@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 /**
  * Created by Work on 01.11.2016.
@@ -16,7 +17,6 @@ public class HelperBase {
   }
 
   public void type(By locator, String text) {
-    click(locator);
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
   }
@@ -33,5 +33,12 @@ public class HelperBase {
       return false;
     }
   }
-
+  public void fillContactForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("firstname"),contactData.getFirstname());
+    type(By.name("lastname"),contactData.getLastname());
+    type(By.name("nickname"),contactData.getNickname());
+    type(By.name("home"),contactData.getHome());
+    type(By.name("mobile"),contactData.getMobile());
+  }
   }
