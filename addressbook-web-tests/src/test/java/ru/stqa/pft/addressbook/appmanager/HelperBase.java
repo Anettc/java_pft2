@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -38,12 +39,14 @@ public class HelperBase {
       return false;
     }
   }
-  public void fillContactForm(ContactData contactData) {
-    type(By.name("firstname"), contactData.getFirstname());
-    type(By.name("firstname"),contactData.getFirstname());
-    type(By.name("lastname"),contactData.getLastname());
-    type(By.name("nickname"),contactData.getNickname());
-    type(By.name("home"),contactData.getHome());
-    type(By.name("mobile"),contactData.getMobile());
+
+  protected boolean isElementPresent(By locator) {
+    try {
+      wd.findElement(locator);
+      return true;
+    }
+    catch (NoSuchElementException ex){
+      return false;
+    }
   }
-  }
+}
