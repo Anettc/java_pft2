@@ -17,7 +17,8 @@ public class ContactHelper  extends HelperBase{
 
   public void deleteSelectedContact() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
 
-  public void selectContact() { click(By.name("selected[]")); }
+  public void selectContact()
+  { click(By.name("selected[]")); }
 
   public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
@@ -31,13 +32,31 @@ public class ContactHelper  extends HelperBase{
     type(By.name("mobile"),contactData.getMobile());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      new Select(wd.findElement(By.name("add new"))).selectByVisibleText(contactData.getGroup());
     } else  {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
+      Assert.assertFalse(isElementPresent(By.name("add new")));
     }
   }
   public void submitContactCreation() { click(By.xpath("//div[@id='content']/form/input[21]"));}
 
   public void returnToHomePage() { click(By.linkText("home"));}
 
+  public void createContact(ContactData contactt) {
+    initContactCreation();
+    fillContactForm(contactt, true);
+    submitContactCreation();
+  }
+
+  public void initContactCreation() {
+    click(By.linkText("add new"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+  public void agreeContactDeletion() {
+    wd.switchTo().alert().accept();
+  }
+
 }
+
