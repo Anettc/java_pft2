@@ -32,12 +32,12 @@ public class ContactHelper  extends HelperBase{
     type(By.name("mobile"),contactData.getMobile());
 
     if (creation) {
-      new Select(wd.findElement(By.name("add new"))).selectByVisibleText(contactData.getGroup());
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else  {
-      Assert.assertFalse(isElementPresent(By.name("add new")));
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
-  public void submitContactCreation() { click(By.xpath("//div[@id='content']/form/input[21]"));}
+  public void submitContactCreation() {  click(By.name("submit"));}
 
   public void returnToHomePage() { click(By.linkText("home"));}
 
@@ -58,5 +58,12 @@ public class ContactHelper  extends HelperBase{
     wd.switchTo().alert().accept();
   }
 
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
 }
 
