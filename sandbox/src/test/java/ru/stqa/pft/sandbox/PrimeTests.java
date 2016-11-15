@@ -18,9 +18,9 @@ public class PrimeTests {
 
   }
 
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testPrimeLong() {
-    long  n = Integer.MAX_VALUE;
+    long n = Integer.MAX_VALUE;
     Assert.assertTrue(Primes.isPrime(n));
 
   }
