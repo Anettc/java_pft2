@@ -1,9 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -27,6 +24,15 @@ public class HelperBase {
       }
     }
   }
+  public boolean isCheckBoxSelected(By by) {
+    return findElement(by).isSelected();
+  }
+
+  public WebElement findElement(By locator) {
+    return findElement(locator);
+  }
+
+
   public void click(By locator) {
     wd.findElement(locator).click();
   }
