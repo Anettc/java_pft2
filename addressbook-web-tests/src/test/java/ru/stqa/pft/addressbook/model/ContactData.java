@@ -6,8 +6,9 @@ public class ContactData {
   private  String nickname;
   private  String home;
   private  String mobile;
-  private int id;
-//  private String group;
+  private int id= Integer.MAX_VALUE;;
+  private String group;
+
 
   public ContactData(String firstname, String lastname, String nickname, String home, String mobile, String group) {
     this.firstname = firstname;
@@ -17,6 +18,11 @@ public class ContactData {
     this.mobile = mobile;
     this.group = group;
   }
+
+  public ContactData(int id, String firstname, String lastname, Object o, Object o1, Object o2) {
+
+  }
+
   public void setId(int id) {
     this.id = id;
   }
@@ -31,11 +37,15 @@ public class ContactData {
      this.mobile = mobile;
      this.group = group;
    }
+
+
   public int getId() {
     return id;
   }
 
-  public ContactData(int id, String firstname, String lastname, Object home, Object mobile, Object group) {
+
+  public ContactData(String id, String firstname, String lastname, Object home, Object mobile, Object group) {
+    this.firstname = firstname;
   }
 
   public String getFirstname() {
@@ -61,14 +71,6 @@ public class ContactData {
   public String getGroup() {
     return group;
   }
-  private String group;
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -77,6 +79,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
@@ -86,9 +89,18 @@ public class ContactData {
   public int hashCode() {
     int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + id;
     return result;
   }
 
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            "firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
 
 }
 

@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class ContactHelper  extends HelperBase {
 
   public void selectContact(int index) {
     if (!isCheckBoxSelected(By.name("selected[]"))) {
-      wd.findElements(By.xpath("//input[@name='selected[]']")).get(index).click();
+      wd.findElements(By.name("selected[]")).get(index).click();
     }
   }
   public void selectContactById(int id) {
@@ -59,6 +58,9 @@ public class ContactHelper  extends HelperBase {
   }
 
   public void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))){
+      return;
+    }
     click(By.linkText("home"));
   }
 
@@ -90,11 +92,11 @@ public class ContactHelper  extends HelperBase {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements =wd.findElements(By.cssSelector("entry"));
+    List<WebElement> elements =wd.findElements(By.name("entry"));
     for (WebElement element : elements ) {
-      List<WebElement> names =wd.findElements(By.cssSelector("td"));
-      String firstname =names.get(2).getText();
-      String lastname =names.get(1).getText();
+      List<WebElement> cells =wd.findElements(By.tagName("td"));
+      String firstname =cells.get(2).getText();
+      String lastname =cells.get(1).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       ContactData contact = new ContactData(id, firstname,lastname, null, null,null);
       contacts.add(contact);
