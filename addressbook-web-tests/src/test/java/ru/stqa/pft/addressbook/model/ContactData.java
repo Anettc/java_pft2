@@ -1,12 +1,13 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private  String firstname;
-  private  String lastname;
-  private  String nickname;
-  private  String home;
-  private  String mobile;
-  private int id= Integer.MAX_VALUE;;
+  private String firstname;
+  private String lastname;
+  private String nickname;
+  private String home;
+  private String mobile;
+  private int id = Integer.MAX_VALUE;
+  ;
   private String group;
 
 
@@ -27,25 +28,39 @@ public class ContactData {
     this.id = id;
   }
 
-   public ContactData(int id, String firstname, String lastname, String nickname, String home, String mobile, String group) {
-     this.id = id;
-     this.firstname = firstname;
-     this.lastname = lastname;
+  public ContactData(int id, String firstname, String lastname, String nickname, String home, String mobile, String group) {
+    this.id = id;
+    this.firstname = firstname;
+    this.lastname = lastname;
 
-     this.nickname = nickname;
-     this.home = home;
-     this.mobile = mobile;
-     this.group = group;
-   }
+    this.nickname = nickname;
+    this.home = home;
+    this.mobile = mobile;
+    this.group = group;
+  }
 
 
   public int getId() {
     return id;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
 
-  public ContactData(String id, String firstname, String lastname, Object home, Object mobile, Object group) {
-    this.firstname = firstname;
+    ContactData that = (ContactData) o;
+
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstname != null ? firstname.hashCode() : 0;
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    return result;
   }
 
   public String getFirstname() {
@@ -70,27 +85,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (id != that.id) return false;
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = firstname != null ? firstname.hashCode() : 0;
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    result = 31 * result + id;
-    return result;
   }
 
   @Override

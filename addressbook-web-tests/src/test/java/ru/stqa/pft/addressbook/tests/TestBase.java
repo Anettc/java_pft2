@@ -8,8 +8,8 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 /**
  * Created by Work on 31.10.2016.
  */
-public class TestBase  {
-protected  final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+public class TestBase {
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
   @BeforeMethod
   public void setUp() throws Exception {
