@@ -91,7 +91,7 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public int getContactCount() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
@@ -112,5 +112,32 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
+
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+            .withNickname(nickname).withMobile(mobile).withHome(home).withHome(work);
+  }
+
+  private void initContactModificationById(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+    //WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
+    //WebElement row = checkbox.findElement(By.xpath("./../.."));
+    //List<WebElement> cells = row.findElement(By.tagName("td"));
+    //cells.get(7).findElement(By.tagName("a")).click();
+
+    //способы найти нужный элемент на странице:
+   // wd.findElement(By.xpath(String.format("//input[@value='%s]/../../td[8]/a", id))).click();
+   // wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s]/td[8]/a", id))).click();
+   // wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
+  }
 
 }
