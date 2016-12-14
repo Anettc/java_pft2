@@ -26,7 +26,6 @@ public class ApplicationManager {
     this.browser = browser;
   }
 
-
   public void init() {
     if (Objects.equals(browser, BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
@@ -46,7 +45,6 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-
   public void stop() {
     wd.quit();
   }
@@ -59,7 +57,6 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-
   public void goToHomePage() {
     wd.findElement(By.linkText("home")).click();
   }
@@ -67,4 +64,5 @@ public class ApplicationManager {
   public ContactHelper contact() {
     return contactHelper;
   }
+
 }

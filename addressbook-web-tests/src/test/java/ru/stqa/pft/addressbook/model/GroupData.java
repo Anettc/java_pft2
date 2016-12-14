@@ -1,69 +1,69 @@
 package ru.stqa.pft.addressbook.model;
 
 public class GroupData {
-  private int id = Integer.MAX_VALUE;
-  private String name;
-  private String header;
-  private String footer;
+    private int id = Integer.MAX_VALUE;
+    private String name;
+    private String header;
+    private String footer;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    public GroupData withId(int id) {
+        this.id = id;
+        return this;
+    }
 
-    GroupData groupData = (GroupData) o;
+    public GroupData withName(String name) {
+        this.name = name;
+        return this;
+    }
 
-    return name != null ? name.equals(groupData.name) : groupData.name == null;
+    public GroupData withHeader(String header) {
+        this.header = header;
+        return this;
+    }
 
-  }
+    public GroupData withFooter(String footer) {
+        this.footer = footer;
+        return this;
+    }
 
-  @Override
-  public int hashCode() {
-    return name != null ? name.hashCode() : 0;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public GroupData withId(int id) {
-    this.id = id;
-    return this;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public GroupData withName(String name) {
-    this.name = name;
-    return this;
-  }
+    public String getHeader() {
+        return header;
+    }
 
-  public GroupData withHeader(String header) {
-    this.header = header;
-    return this;
-  }
+    public String getFooter() {
+        return footer;
+    }
 
-  public GroupData withFooter(String footer) {
-    this.footer = footer;
-    return this;
-  }
+    @Override
+    public String toString() {
+        return "GroupData{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 
-  public int getId() {
-    return id;
-  }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-  public String getName() {
-    return name;
-  }
+        GroupData groupData = (GroupData) o;
 
-  public String getHeader() {
-    return header;
-  }
+        return name != null ? name.equals(groupData.name) : groupData.name == null;
 
-  public String getFooter() {
-    return footer;
-  }
+    }
 
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "name='" + name + '\'' +
-            ", id='" + id + '\'' +
-            '}';
-  }
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
 
 }

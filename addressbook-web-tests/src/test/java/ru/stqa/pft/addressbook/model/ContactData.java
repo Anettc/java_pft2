@@ -9,6 +9,67 @@ public class ContactData {
     private String group;
     private String homePhone;
     private String workPhone;
+    private String allPhones;
+    private String allEmails;
+    private String allAddresses;
+    private String email;
+    private String email2;
+    private String email3;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public String getAllAddresses() {
+        return allAddresses;
+    }
+
+    public ContactData withAllAddresses(String allAddresses) {
+        this.allAddresses = allAddresses;
+        return this;
+    }
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
 
     public String getAllPhones() {
         return allPhones;
@@ -18,9 +79,6 @@ public class ContactData {
         this.allPhones = allPhones;
         return this;
     }
-
-    private String allPhones;
-
 
     public ContactData withId(int id) {
         this.id = id;
@@ -57,10 +115,6 @@ public class ContactData {
         return this;
     }
 
-    /* public Groups getGroups(Groups groups) {
-       return new Groups(groups);
-     }
-   */
     public ContactData withGroup(String group) {
         this.group = group;
         return this;
@@ -82,7 +136,9 @@ public class ContactData {
         return nickname;
     }
 
-    public String getHomePhone() { return homePhone;}
+    public String getHomePhone() {
+        return homePhone;
+    }
 
     public String getMobilePhone() {
         return mobilePhone;
