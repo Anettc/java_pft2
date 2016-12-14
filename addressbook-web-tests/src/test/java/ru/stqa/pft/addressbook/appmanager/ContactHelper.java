@@ -27,6 +27,10 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
 
+    public void viewFullCard(int id) {
+        wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
+    }
+
     public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
@@ -76,6 +80,11 @@ public class ContactHelper extends HelperBase {
         submitContactModification();
         contactCache = null;
         returnToHomePage();
+    }
+
+    public String contactInfoFromEditForm(ContactData contact) {
+        viewFullCard(contact.getId());
+        return wd.findElement(By.id("content")).getText();
     }
 
     public void delete(ContactData contact) {
