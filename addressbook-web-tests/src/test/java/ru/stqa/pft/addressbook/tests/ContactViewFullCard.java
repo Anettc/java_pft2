@@ -17,7 +17,7 @@ public class ContactViewFullCard extends TestBase {
     public void testContactViewFullCards() {
         app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
-        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);//сравнение данных, которые занесены при создании контакта и тех, что отображаются в карточке полной информации
         String ContactViewFull = cleaned(app.contact().contactInfoFromEditForm(contact));
         assertThat(ContactViewFull, equalTo(cleaned(mergeFullcard(contactInfoFromEditForm))));//сравниваем список заполненных данных и данных с краткой карточки
     }
